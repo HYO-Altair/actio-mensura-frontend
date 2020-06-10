@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import  { FirebaseContext } from '../../components/Firebase';
 
 const styles = makeStyles((theme) => ({
   root: {
@@ -40,6 +41,13 @@ export default function home(props) {
       <Button variant='contained' onClick={() => handleRedirectToStatistics()}>
         Click me to go to Statistics page
       </Button>
+
+      <FirebaseContext.Consumer>
+        {firebase => {
+          console.log(firebase.testLog());
+          return <div>I've access to Firebase and render something.</div>;
+        }}
+      </FirebaseContext.Consumer>
     </div>
   );
 }
