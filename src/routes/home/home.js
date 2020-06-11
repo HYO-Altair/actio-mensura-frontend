@@ -37,22 +37,15 @@ export default function home(props) {
   };
 
   return (
+    <div className = "body">
+    
+    <div className = "main">
     <div>
-    <div className={classes.root}>
-      <AppBar position='static'>
-        <Toolbar>
-          <Typography variant='h6' className={classes.title}>
-            Actio Mensura Home Page
-          </Typography>
-        </Toolbar>
-      </AppBar>
 
-      <Button variant='contained' onClick={() => handleRedirectToStatistics()}>
-        Click me to go to Statistics page
-      </Button>
     </div>
-    <div> 
+    <div>
       <Demo/>
+    </div>
     </div>
     </div>
   );

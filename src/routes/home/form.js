@@ -7,23 +7,18 @@ import {
   Redirect,
   Link
 } from "react-router-dom";
-
-const layout = {
-  labelCol: {
-    span: 3,
-  },
-  wrapperCol: {
-    span: 4,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 6,
-    span: 4,
-  },
-};
+import {useState, useEffect} from 'react';
 
 const Demo = () => {
+
+  const [form] = Form.useForm();
+  const [, forceUpdate] = useState();
+
+  useEffect(() => {
+    forceUpdate({});
+
+  }, []);
+
   const onFinish = values => {
     console.log('Success:', values);
     window.location = "/statistics"
@@ -36,17 +31,27 @@ const Demo = () => {
 
 
   return (
-    <Form
-      {...layout}
+    <div>
+
+    
+    <div>
+      <h1 className = "logo">
+        ACTIO MENSURA
+      </h1>
+    </div>
+    <div className = "form">
+      <Form form = {form}
+       layout="inline"
+       onFinish={onFinish}
+       onFinishFailed={onFinishFailed}
       name="basic"
       initialValues={{
         remember: true,
       }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+     
     >
       <Form.Item
-        label="ServerID"
+
         name="serverID"
         rules={[
           {
@@ -55,15 +60,28 @@ const Demo = () => {
           },
         ]}
       >
-        <Input />
+        <Input placeholder = "Enter your serverID"/>
       </Form.Item>
 
-      <Form.Item {...tailLayout}>
+      <Form.Item>
         <Button type="primary" htmlType="submit">
         Submit
         </Button>
       </Form.Item>
     </Form>
+    </div>
+    <div className = "footer">
+      <p>
+  
+      </p>
+      <p>
+        A bot to track your discord server activity | By Team Altair
+      </p>
+      <p>
+        
+      </p>
+    </div>
+    </div>
   );
 };
 
