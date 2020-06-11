@@ -6,22 +6,20 @@ import {
   Redirect,
 } from "react-router-dom";
 import "./app.css";
-import Home from "./routes/home/home";
-import Statistics from "./routes/statistics/statistics";
-
+import Home from "./routes/home/Home";
+import Statistics from "./routes/statistics/Statistics";
 
 function App() {
   return (
     <div>
-    <div className='App'>
-      <Router>
-        <Switch>
-          <Route exact path='/statistics' component={Statistics} />
-          <Route path='/*' component={Home} />
-        </Switch>
-      </Router>
-    </div>
-
+      <div className='App'>
+        <Router>
+          <Switch>
+            <Route exact path='/statistics' component={Statistics} />
+            <Route path='/*' component={Home} />
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 }
