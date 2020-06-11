@@ -14,10 +14,11 @@ const Demo = () => {
   const [form] = Form.useForm();
   const [, forceUpdate] = useState();
 
+  // To disable submit button at the beginning.
   useEffect(() => {
     forceUpdate({});
-
   }, []);
+
 
   const onFinish = values => {
     console.log('Success:', values);
@@ -32,18 +33,18 @@ const Demo = () => {
 
   return (
     <div>
-
-    
     <div>
       <h1 className = "logo">
         ACTIO MENSURA
       </h1>
     </div>
     <div className = "form">
-      <Form form = {form}
-       layout="inline"
-       onFinish={onFinish}
-       onFinishFailed={onFinishFailed}
+      <Form 
+      
+      form = {form}
+      layout="inline"
+      onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
       name="basic"
       initialValues={{
         remember: true,
@@ -61,9 +62,11 @@ const Demo = () => {
         ]}
       >
         <Input placeholder = "Enter your serverID"/>
+
+        
       </Form.Item>
 
-      <Form.Item>
+      <Form.Item >
         <Button type="primary" htmlType="submit">
         Submit
         </Button>
