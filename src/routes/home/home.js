@@ -6,6 +6,15 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import  { FirebaseContext } from '../../components/Firebase';
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+
+import Demo from './form'
+
 const styles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -29,16 +38,12 @@ export default function home(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position='static'>
-        <Toolbar>
-          <Typography variant='h6' className={classes.title}>
-            Actio Mensura Home Page
-          </Typography>
-        </Toolbar>
-      </AppBar>
+    <div className = "body">
+    
+    <div className = "main">
+    <div>
 
-      <Button variant='contained' onClick={() => handleRedirectToStatistics()}>
+    <Button variant='contained' onClick={() => handleRedirectToStatistics()}>
         Click me to go to Statistics page
       </Button>
 
@@ -48,6 +53,11 @@ export default function home(props) {
           return <div>I've access to Firebase and render something.</div>;
         }}
       </FirebaseContext.Consumer>
+    </div>
+    <div>
+      <Demo/>
+    </div>
+    </div>
     </div>
   );
 }
