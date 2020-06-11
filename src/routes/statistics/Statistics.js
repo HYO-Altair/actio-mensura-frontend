@@ -24,7 +24,6 @@ export default function Statistics(props) {
   const [serverFound, setServerFound] = React.useState(false);
   const [stats, setStats] = React.useState(null);
 
-  // 1 time check if server exists
   useEffect(() => {
     // extract and set server id
     let parsed = queryString.parse(props.location.search);
@@ -37,10 +36,8 @@ export default function Statistics(props) {
         if (snapshot.val()) {
           // indicate server was found
           setServerFound(true);
-          // set initial statistics
-          db.ref(snapshot.val() + "/days/").once("value", (snapshot) => {
-            console.log(snapshot.val());
-            console.log(stats);
+          // track statistics
+          db.ref(snapshot.val() + "/days/").on("value", (snapshot) => {
             if (Object.entries(snapshot.val()) !== stats)
               setStats(Object.entries(snapshot.val()));
           });
@@ -50,30 +47,12 @@ export default function Statistics(props) {
     );
   }, []);
 
-  // check for database updates every 6 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      db.ref(`servers/${id}`).once("value", (snapshot) => {
-        if (serverFound) {
-          db.ref(snapshot.val() + "/days/").once("value", (snapshot) => {
-            console.log(snapshot.val());
-            console.log(stats);
-            if (Object.entries(snapshot.val()) != stats)
-              setStats(Object.entries(snapshot.val()));
-            return;
-          });
-        } else clearInterval(interval);
-      });
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [db, id, stats]);
-
   return (
     <div className='body'>
       <div>
         <div className='main-stats'>
           <h1 className='server-heading'>
-            SERVER STATS {"\u00A0"}
+            SERVER STATS for {id} {"\u00A0"}
             <br />
             server found: {serverFound ? "yes" : "no"} <br />
             {stats}
