@@ -30,13 +30,26 @@
     height: 100%;
     width: 100%;
     animation-name: colorchange;
-    animation-duration: 10s;
+    animation-duration: 20s;
     animation-iteration-count: infinite;
     
     
 }
 
 .main{
+    margin: 0;
+    position: absolute;
+    top: 35%;;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.main-stats{
     margin: 0;
     position: absolute;
     top: 35%;;
@@ -60,12 +73,24 @@
     font-family: BPreplay, "Microsoft JhengHei";
 }
 
+.server-heading{
+    
+    color: white; 
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 600%;
+    font-size: 50px !important;
+    font-weight: 600;
+    font-style: italic;
+     font-family: BPreplay, "Microsoft JhengHei";
+ }
+
 .footer{
     color: black;
     position: absolute;
     white-space: nowrap;
     overflow: hidden;
-    top: 275%;
+    top: 325%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -74,9 +99,9 @@
 .form{
     white-space: nowrap;
     overflow: hidden;
-    position: absolute;
+    position: relative;
     top: 125%;
-    left: 50%;
-
+    left: 75%;
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
