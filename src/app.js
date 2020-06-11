@@ -8,8 +8,11 @@ import {
 import "./app.css";
 import Home from "./routes/home/home";
 import Statistics from "./routes/statistics/statistics";
+
+
 function App() {
   return (
+    <div>
     <div className='App'>
       <Router>
         <Switch>
@@ -17,6 +20,8 @@ function App() {
           <Route path='/*' component={Home} />
         </Switch>
       </Router>
+    </div>
+
     </div>
   );
 }

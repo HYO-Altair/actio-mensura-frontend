@@ -5,6 +5,15 @@ import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+
+import Demo from './form'
+
 const styles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -28,6 +37,7 @@ export default function home(props) {
   };
 
   return (
+    <div>
     <div className={classes.root}>
       <AppBar position='static'>
         <Toolbar>
@@ -40,6 +50,10 @@ export default function home(props) {
       <Button variant='contained' onClick={() => handleRedirectToStatistics()}>
         Click me to go to Statistics page
       </Button>
+    </div>
+    <div> 
+      <Demo/>
+    </div>
     </div>
   );
 }
