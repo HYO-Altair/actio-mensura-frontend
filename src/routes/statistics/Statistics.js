@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import app from "firebase/app";
 import "firebase/database";
+import Linegraph from "../../components//linegraph/Linegraph";
 
 // set querystring to extract search parameters
 const queryString = require("query-string");
@@ -22,7 +23,7 @@ export default function Statistics(props) {
   // hooks
   const [id, setID] = React.useState(null);
   const [serverFound, setServerFound] = React.useState(false);
-  const [stats, setStats] = React.useState(null);
+  const [stats, setStats] = React.useState({});
 
   useEffect(() => {
     // extract and set server id
@@ -38,8 +39,9 @@ export default function Statistics(props) {
           setServerFound(true);
           // track statistics
           db.ref(snapshot.val() + "/days/").on("value", (snapshot) => {
-            if (Object.entries(snapshot.val()) !== stats)
-              setStats(Object.entries(snapshot.val()));
+            console.log(snapshot.val());
+
+            if (snapshot.val() !== stats) setStats(snapshot.val());
           });
         } else setServerFound(false);
         return;
@@ -55,7 +57,7 @@ export default function Statistics(props) {
             SERVER STATS for {id} {"\u00A0"}
             <br />
             server found: {serverFound ? "yes" : "no"} <br />
-            {stats}
+            <Linegraph stats={stats} />
           </h1>
         </div>
       </div>
